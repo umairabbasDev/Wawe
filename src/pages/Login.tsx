@@ -1,17 +1,18 @@
 import { useContext } from "react";
-import Box from "@mui/joy/Box";
-import Button from "@mui/joy/Button";
-import Checkbox from "@mui/joy/Checkbox";
-import FormControl from "@mui/joy/FormControl";
+import {
+  Box,
+  Input,
+  Typography,
+  Button,
+  Checkbox,
+  FormControl,
+} from "@mui/joy";
 import FormLabel, { formLabelClasses } from "@mui/joy/FormLabel";
-
-import Link from "@mui/joy/Link";
-import Input from "@mui/joy/Input";
-import Typography from "@mui/joy/Typography";
-
-// import { useForm } from "../hooks/useform";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/Auth";
-import ColorSchemeToggle from "../components/UI/ThemeToggle";
+import { ThemeToggle } from "../components";
+import GoogleIcon from "../assets/GoogleIcon";
+// import { useForm } from "../hooks/useform";
 
 interface FormElements extends HTMLFormControlsCollection {
   email: HTMLInputElement;
@@ -79,25 +80,14 @@ const Login = () => {
           >
             <Typography
               fontWeight="lg"
-              startDecorator={
-                <Box
-                  component="span"
-                  sx={{
-                    width: 24,
-                    height: 24,
-                    background: (theme) =>
-                      `linear-gradient(45deg, ${theme.vars.palette.primary.solidBg}, ${theme.vars.palette.primary.solidBg} 30%, ${theme.vars.palette.primary.softBg})`,
-                    borderRadius: "50%",
-                    boxShadow: (theme) => theme.shadow.md,
-                    "--joy-shadowChannel": (theme) =>
-                      theme.vars.palette.primary.mainChannel,
-                  }}
-                />
-              }
+              mx={2}
+              sx={{ color: "var(--primary-color)" }}
+              level="h1"
+              startDecorator={<img src="./headphones.png" alt="site logo" />}
             >
-              Logo
+              Wawe
             </Typography>
-            <ColorSchemeToggle />
+            <ThemeToggle />
           </Box>
           <Box
             component="main"
@@ -151,9 +141,11 @@ const Login = () => {
                   label="Remember for 30 days"
                   name="persistent"
                 />
-                <Link fontSize="sm" href="#replace-with-a-link" fontWeight="lg">
-                  Forgot your password?
-                </Link>
+                <Typography fontSize="sm" fontWeight="lg" color="primary">
+                  <Link to="#" style={{ textDecoration: "none" }}>
+                    Forgot your password?
+                  </Link>
+                </Typography>
               </Box>
               <Button type="submit" fullWidth>
                 Sign in
@@ -164,10 +156,14 @@ const Login = () => {
               variant="outlined"
               color="neutral"
               fullWidth
-              startDecorator={<div>google</div>}
+              startDecorator={<GoogleIcon />}
             >
               Sign in with Google
             </Button>
+
+            <Typography level="body2" sx={{ my: 1, mb: 3 }}>
+              do not have an account <Link to="/register">Register</Link> here.
+            </Typography>
           </Box>
           <Box component="footer" sx={{ py: 3 }}>
             <Typography level="body3" textAlign="center">
