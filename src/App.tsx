@@ -1,12 +1,21 @@
-import "./App.css";
-import { LoginPage } from "./routes";
+import { useContext } from "react";
+import { AuthContext } from "./context/Auth";
+import AppRouter from "./routes/AppRouter";
 
-function App() {
+const App = () => {
+  const { status } = useContext(AuthContext);
+
+  if (status === "checking")
+    return (
+      <p className="loading">
+        <span>Checking credentials, wait a moment...</span>
+      </p>
+    );
+
   return (
-    <>
-      <LoginPage />
-    </>
+    <main>
+      <AppRouter />
+    </main>
   );
-}
-
+};
 export default App;
