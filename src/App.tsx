@@ -28,6 +28,7 @@ const App = () => {
             "--Cover-width": "40vw", // must be `vw` only
             "--Form-maxWidth": "700px",
             "--Transition-duration": "0.4s", // set to `none` to disable transition
+            "--primary-color": "#C7B2EF",
           },
         }}
       />
