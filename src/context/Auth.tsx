@@ -5,7 +5,7 @@ import {
   onAuthStateHasChanged,
   signInWithCredentials,
   singInWithGoogle,
-} from "../firebase";
+} from "../Firebase";
 import { useNavigate } from "react-router-dom";
 
 export interface AuthStateContext {
