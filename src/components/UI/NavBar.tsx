@@ -1,5 +1,5 @@
 import { Avatar, Box, Typography } from "@mui/joy";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ColorSchemeToggle from "./ThemeToggle";
 
 const NavBar = () => {
@@ -25,10 +25,15 @@ const NavBar = () => {
             mx={2}
             sx={{ color: "var(--primary-color)" }}
             level="h1"
-            startDecorator={<img src="./headphones.png" alt="site logo" />}
+            startDecorator={
+              <Link to="/">
+                <img src="./headphones.png" alt="site logo" />
+              </Link>
+            }
           >
             Wawe
           </Typography>
+
           <Box>
             {/* <Link to="/" style={{ padding: 5 }}>
               Home
@@ -39,9 +44,9 @@ const NavBar = () => {
           </Box>
         </Box>
         <Box
-        mx={2}
+          mx={2}
           sx={{
-            width:"100px",
+            width: "100px",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
