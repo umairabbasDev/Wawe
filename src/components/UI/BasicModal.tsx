@@ -5,18 +5,38 @@ const BasicModal = ({
   setOpen,
   children,
   title,
+  closeOn = "closeClick",
 }: {
   open: boolean;
   setOpen: (arg0: boolean) => void;
   children: JSX.Element;
   title: string;
+  closeOn?: "backdropClick" | "closeClick" | "bothClick";
 }) => {
   return (
     <Modal
       aria-labelledby="modal-title"
       aria-describedby="modal-desc"
       open={open}
-      onClose={() => setOpen(false)}
+      onClose={(
+        _event: React.MouseEvent<HTMLButtonElement>,
+        reason: string
+      ) => {
+        switch (closeOn) {
+          case "backdropClick":
+            if (reason === closeOn) {
+              setOpen(false);
+            }
+            break;
+          case "closeClick":
+            if (reason === closeOn) {
+              setOpen(false);
+            }
+            break;
+          default:
+            setOpen(false);
+        }
+      }}
       sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
     >
       <Sheet
