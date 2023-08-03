@@ -26,8 +26,6 @@ const AddBook = () => {
       <Typography id="modal-desc" textColor="text.tertiary">
         Make sure to use correct information, the file should not a stolen ,
         also <b>Mention necessary Person</b>
-        <br />
-        <Typography level="h4">Upload File</Typography>
       </Typography>
 
       <Box
