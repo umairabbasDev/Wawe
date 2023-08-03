@@ -55,7 +55,7 @@ const List = () => {
       </Button>
       <MainFooter />
 
-      <ModalFarm open={open} setOpen={setOpen} title="Add your book">
+      <ModalFarm open={open} setOpen={setOpen} title="Add Your Book">
         <AddBook />
       </ModalFarm>
     </Box>
