@@ -6,7 +6,7 @@ import {
   Input,
   Typography,
 } from "@mui/joy";
-import { MainFooter } from "../components";
+import { BookCard, MainFooter } from "../components";
 
 interface FormElements extends HTMLFormControlsCollection {
   name: HTMLInputElement;
@@ -85,6 +85,23 @@ const List = () => {
           </Button>
         </form>
       </Box>
+
+      <Box
+        component="main"
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          
+          gap: 2,
+          flexWrap: "wrap",
+        }}
+      >
+        {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(() => (
+          <BookCard />
+        ))}
+      </Box>
+
       <MainFooter />
     </Box>
   );

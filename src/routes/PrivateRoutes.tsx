@@ -1,7 +1,7 @@
 import HomePage from "../pages/Home";
 import BooksPage from "../pages/List";
 import { Route, Routes } from "react-router-dom";
-// import NoFoundPage from "../pages/NoFound";
+import NoFoundPage from "../pages/NoFound";
 import NavBar from "../components/UI/NavBar";
 
 const PrivateRoutes = () => {
@@ -11,7 +11,7 @@ const PrivateRoutes = () => {
       <Routes>
         <Route index path="/" element={<HomePage />} />
         <Route path="/books" element={<BooksPage />} />
-        {/* <Route path="*" element={<NoFoundPage />} /> */}
+        <Route path="*" element={<NoFoundPage />} />
       </Routes>
     </>
   );
