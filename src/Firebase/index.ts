@@ -1,11 +1,12 @@
 import { COLLECTION, UsersFirebase } from "./App/types";
 import Firebase from './App'
-import { createDocument, } from "./lib";
+import { createDocument, uploadStorageFile, } from "./lib";
 import {
   createUserWithEmailAndPassword, GoogleAuthProvider,
   onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup
 } from 'firebase/auth'
 import { AuthStateContext } from "../context/Auth";
+import { Book } from "../components/ListPage/type";
 
 type StateDispatch = React.Dispatch<React.SetStateAction<Pick<AuthStateContext, "status" | "userId">>>
 interface PropsRegister {
@@ -24,9 +25,22 @@ const Auth = {
 
 
 const book = {
-  upload: async () => {
+  upload: async (bookData: Book) => {
     try {
       console.log("uploading file... ");
+      const { url } = await uploadStorageFile(bookData.userId, bookData.file, bookData.file.type)
+
+      const newBook = {
+        about: bookData.about,
+        DOP: bookData.DOP,
+        userId: bookData.userId,
+        writer: bookData.writer,
+        src: url
+      }
+
+      createDocument(newBook, COLLECTION.BOOKS)
+      console.log("url : ", url);
+
 
     } catch (error) {
       console.error("Messages delete  : ", error);
