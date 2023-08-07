@@ -7,17 +7,26 @@ import {
   Textarea,
   Typography,
 } from "@mui/joy";
-import { FileFormElement } from "./type";
+import { Book, FileFormElement } from "./type";
+import { book } from "../../Firebase";
+import { useContext } from "react";
+import { AuthContext } from "../../context/Auth";
 
 const AddBook = () => {
+  const { userId } = useContext(AuthContext);
+
   const handleSubmit = (e: React.FormEvent<FileFormElement>) => {
     e.preventDefault();
     const formElements = e.currentTarget.elements;
-    const data = {
+    const data: Book = {
+      userId: userId as string,
       name: formElements.name.value,
-      date: formElements.date.value,
       file: formElements.file.files && formElements.file.files[0],
+      DOP: formElements.date.value as unknown as Date,
+      about: formElements.about.value,
+      writer: formElements.writer.value,
     };
+    book.upload(data);
     console.log(data);
   };
 
