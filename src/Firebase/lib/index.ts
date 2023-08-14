@@ -5,6 +5,7 @@ import {
   deleteDoc,
   doc,
   getDoc,
+  getDocs,
   setDoc,
   updateDoc,
 } from "firebase/firestore";
@@ -151,6 +152,28 @@ async function deleteDocument(docId: string, collectionName: string) {
 }
 
 
+
+async function getWholeCollection(name: string) {
+  try {
+
+    const querySnapshot = await getDocs(collection(FIREBASE.db, name));
+    if (querySnapshot.docs.length > 0) {
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+      });
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+
+
+
+
 export {
   createDocument,
   createDocumentWithCustomID,
@@ -159,4 +182,5 @@ export {
   getDocumentByRef,
   uploadStorageFile,
   deleteDocument,
+  getWholeCollection
 };

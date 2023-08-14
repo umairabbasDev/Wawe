@@ -1,6 +1,6 @@
 import { COLLECTION, UsersFirebase } from "./App/types";
 import Firebase from './App'
-import { createDocument, uploadStorageFile, } from "./lib";
+import { createDocument, getWholeCollection, uploadStorageFile, } from "./lib";
 import {
   createUserWithEmailAndPassword, GoogleAuthProvider,
   onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup
@@ -60,6 +60,7 @@ const book = {
   list: async () => {
     try {
       console.log("fetching file list... ");
+      await getWholeCollection(COLLECTION.BOOKS)
 
     } catch (error) {
       console.error("Messages delete  : ", error);
