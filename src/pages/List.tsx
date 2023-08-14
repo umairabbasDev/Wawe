@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Button } from "@mui/joy";
 import { BookCard, MainFooter, ModalFarm } from "../components";
 import { AddBook } from "../components/ListPage";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { book } from "../Firebase";
 
 const List = () => {
   const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    book.list();
+
+    return () => {};
+  }, []);
 
   return (
     <Box
