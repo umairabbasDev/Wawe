@@ -1,8 +1,26 @@
-# Wawe 2.0
+<div align="center">
+
+  <!-- App Name -->
+  <h1>Wawe 2.0</h1>
+
+  <!-- App Icon -->
+  <img src="https://github.com/umairabbasDev/Wawe/blob/Wawe2.0/public/headphones-96.png" alt="Wawe 2.0 Icon" width="96" height="96" />
+
+  <!-- Badges -->
+  [![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-f9ad00.svg)](https://pnpm.io/)
+  [![License](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
+
+  <!-- Another Set of Badges -->
+  ![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34)
+  ![PNPM](https://img.shields.io/badge/pnpm-%234a4a4a.svg?style=for-the-badge&logo=pnpm&logoColor=f69220)
+  ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+
+</div>
+
 
 ## Overview
 
-**Wawe 2.0** is a personal library application designed to manage and organize PDF files efficiently. Built using modern development tools, Wawe 2.0 leverages the power of Vite for fast builds and PNPM for efficient package management.
+**Wawe 2.0** is a personal library application designed to manage and organize PDF files efficiently. Built using modern development tools reactjs, MUI and typecript , Wawe 2.0 leverages the power of Vite for fast builds and PNPM for efficient package management.
 
 ## Features
 
