@@ -2,15 +2,16 @@ import HomePage from "../pages/Home";
 import BooksPage from "../pages/List";
 import { Route, Routes } from "react-router-dom";
 import NoFoundPage from "../pages/NoFound";
-import NavBar from "../components/UI/NavBar";
+import AppLayout from "../layouts/AppLayout";
 
 const PrivateRoutes = () => {
   return (
     <>
-      <NavBar />
       <Routes>
-        <Route index path="/" element={<HomePage />} />
-        <Route path="/books" element={<BooksPage />} />
+        <Route element={<AppLayout />}>
+          <Route index path="/" element={<HomePage />} />
+          <Route path="/books" element={<BooksPage />} />
+        </Route>
         <Route path="*" element={<NoFoundPage />} />
       </Routes>
     </>
@@ -18,4 +19,3 @@ const PrivateRoutes = () => {
 };
 
 export default PrivateRoutes;
-// index

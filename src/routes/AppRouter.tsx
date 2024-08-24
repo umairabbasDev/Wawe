@@ -17,12 +17,3 @@ const AppRouter = () => {
 };
 
 export default AppRouter;
-
-// logo
-// <div>
-//   <img src="/headphones.png" alt="web icon" />
-//   <img src={logo} alt="web logo" />
-// </div>
-
-// NavBar
-// <NavBar/>

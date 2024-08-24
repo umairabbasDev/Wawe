@@ -1,67 +1,164 @@
-import { Avatar, Box, Typography } from "@mui/joy";
-import { Link } from "react-router-dom";
-import ColorSchemeToggle from "./ThemeToggle";
+import * as React from "react";
+import Box from "@mui/joy/Box";
+import Typography from "@mui/joy/Typography";
+import IconButton from "@mui/joy/IconButton";
+import Stack from "@mui/joy/Stack";
+import Input from "@mui/joy/Input";
+import { Link as JoyLink } from "@mui/joy";
+import FolderRoundedIcon from "@mui/icons-material/FolderRounded";
 
-const NavBar = () => {
+import Tooltip from "@mui/joy/Tooltip";
+import Drawer from "@mui/joy/Drawer";
+import ModalClose from "@mui/joy/ModalClose";
+import DialogTitle from "@mui/joy/DialogTitle";
+
+import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import BookRoundedIcon from "@mui/icons-material/BookRounded";
+import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
+import ColorSchemeToggle from "./ThemeToggle";
+import NavDropDown from "./NavDropDown";
+import { AuthContext } from "../../context/Auth";
+import NavItems from "./NavItems";
+import NavLogo from "./NavLogo";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemContent,
+  ListItemDecorator,
+} from "@mui/joy";
+import NAV from "../../config/nav";
+import { Link } from "react-router-dom";
+
+// import Navigation from "./Navigation";
+
+export default function NavBar() {
+  const { handleLogOut } = React.useContext(AuthContext);
+  const [open, setOpen] = React.useState(false);
   return (
-    <nav>
+    <Box
+      sx={{
+        display: "flex",
+        flexGrow: 1,
+        justifyContent: "space-between",
+      }}
+    >
+      <Stack
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        spacing={1}
+        sx={{ display: { xs: "none", sm: "flex" } }}
+      >
+        <NavLogo />
+
+        <List
+          aria-labelledby="nav-list-browse"
+          size="sm"
+          sx={{
+            "--ListItem-radius": "8px",
+            display: "flex",
+            flexDirection: "row",
+            "& .JoyListItemButton-root": { p: "8px" },
+            // background: "orange",
+          }}
+        >
+          {NAV.map(({ link, name }) => (
+            <ListItem key={link}>
+              <Link to={link}>
+                <JoyLink underline="none">
+                  <ListItemButton>
+                    <ListItemDecorator>
+                      <FolderRoundedIcon fontSize="small" />
+                    </ListItemDecorator>
+                    <ListItemContent>{name}</ListItemContent>
+                  </ListItemButton>
+                </JoyLink>
+              </Link>
+            </ListItem>
+          ))}
+        </List>
+      </Stack>
+      <Box sx={{ display: { xs: "inline-flex", sm: "none" } }}>
+        <IconButton
+          variant="plain"
+          color="neutral"
+          onClick={() => setOpen(true)}
+        >
+          <MenuRoundedIcon />
+        </IconButton>
+        <Drawer
+          sx={{ display: { xs: "inline-flex", sm: "none" } }}
+          open={open}
+          onClose={() => setOpen(false)}
+        >
+          <ModalClose />
+          <DialogTitle>
+            <NavLogo />
+          </DialogTitle>
+          <Box sx={{ px: 1 }}>
+            <NavItems />
+          </Box>
+        </Drawer>
+      </Box>
       <Box
-        component="header"
         sx={{
           display: "flex",
+          flexDirection: "row",
+          gap: 1.5,
           alignItems: "center",
-          justifyContent: "space-between",
         }}
       >
-        <Box
+        <Input
+          size="sm"
+          variant="outlined"
+          placeholder="Search anything…"
+          startDecorator={<SearchRoundedIcon color="primary" />}
+          endDecorator={
+            <IconButton
+              variant="outlined"
+              color="neutral"
+              sx={{ bgcolor: "background.level1" }}
+            >
+              <Typography level="title-sm" textColor="text.icon">
+                ⌘ K
+              </Typography>
+            </IconButton>
+          }
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            alignSelf: "center",
+            display: {
+              xs: "none",
+              sm: "flex",
+            },
+          }}
+        />
+        <IconButton
+          size="sm"
+          variant="outlined"
+          color="neutral"
+          sx={{
+            display: { xs: "inline-flex", sm: "none" },
+            alignSelf: "center",
           }}
         >
-          <Typography
-            fontWeight="lg"
-            mx={2}
-            sx={{ color: "var(--primary-color)" }}
-            level="h1"
-            startDecorator={
-              <Link to="/">
-                <img src="./headphones.png" alt="site logo" />
-              </Link>
-            }
-          >
-            Wawe
-          </Typography>
-
-          <Box>
-            {/* <Link to="/" style={{ padding: 5 }}>
-              Home
-            </Link>
-            <Link to="/about" style={{ padding: 5 }}>
-              About
-            </Link> */}
-          </Box>
-        </Box>
-        <Box
-          mx={2}
-          sx={{
-            width: "100px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <ColorSchemeToggle />
-          <Avatar
-            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80"
+          <SearchRoundedIcon />
+        </IconButton>
+        <Tooltip title="Joy UI overview" variant="outlined">
+          <IconButton
+            size="sm"
+            variant="plain"
             color="neutral"
-            variant="solid"
-          />
-        </Box>
+            component="a"
+            href="/blog/first-look-at-joy/"
+            sx={{ alignSelf: "center" }}
+          >
+            <BookRoundedIcon />
+          </IconButton>
+        </Tooltip>
+        <ColorSchemeToggle />
+        <NavDropDown handleLogOut={handleLogOut} />
       </Box>
-    </nav>
+    </Box>
   );
-};
-
-export default NavBar;
+}

@@ -1,18 +1,12 @@
-import { useContext } from "react";
-import { AuthContext } from "../context/Auth";
 import { Box, Button, Typography } from "@mui/joy";
 
 const Home = () => {
-  const { userId, handleLogOut } = useContext(AuthContext);
-
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "94dvh",
-        maxWidth: "100%",
-        px: 2,
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+        gap: 2,
       }}
     >
       <Box
@@ -39,19 +33,11 @@ const Home = () => {
           <Typography component="h1" fontSize="xl2" fontWeight="lg">
             Welcome back
           </Typography>
-          <Typography level="body2" sx={{ my: 1, mb: 3 }}>
-            Your ID is: <span>{userId}</span>
+          <Typography level="body-md" sx={{ my: 1, mb: 3 }}>
+            Let's Look around
           </Typography>
+          <Button fullWidth>Explore</Button>
         </div>
-
-        <Button color="danger" onClick={handleLogOut} fullWidth>
-          Log out
-        </Button>
-      </Box>
-      <Box component="footer" sx={{ py: 3 }}>
-        <Typography level="body3" textAlign="center">
-          © Wawe {new Date().getFullYear()}
-        </Typography>
       </Box>
     </Box>
   );
