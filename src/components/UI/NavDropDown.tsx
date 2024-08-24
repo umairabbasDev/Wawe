@@ -8,8 +8,7 @@ import Box from "@mui/joy/Box";
 import Typography from "@mui/joy/Typography";
 
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
-import HelpRoundedIcon from "@mui/icons-material/HelpRounded";
-import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 
 export default function NavDropDown({
@@ -68,15 +67,15 @@ export default function NavDropDown({
         </MenuItem>
         <ListDivider />
         <MenuItem>
-          <HelpRoundedIcon />
-          Help
+          <AccountBoxIcon />
+         Profile
         </MenuItem>
         <MenuItem>
           <SettingsRoundedIcon />
           Settings
         </MenuItem>
         <ListDivider />
-        <MenuItem component="a" href="/blog/first-look-at-joy/">
+        {/* <MenuItem component="a" href="/blog/first-look-at-joy/">
           First look at Joy UI
           <OpenInNewRoundedIcon />
         </MenuItem>
@@ -86,8 +85,8 @@ export default function NavDropDown({
         >
           Sourcecode
           <OpenInNewRoundedIcon />
-        </MenuItem>
-        <ListDivider />
+        </MenuItem> */}
+        {/* <ListDivider /> */}
         <MenuItem onClick={handleLogOut}>
           <LogoutRoundedIcon />
           Log out

@@ -1,19 +1,18 @@
 import * as React from "react";
 import Box from "@mui/joy/Box";
-import Typography from "@mui/joy/Typography";
+// import Typography from "@mui/joy/Typography";
 import IconButton from "@mui/joy/IconButton";
 import Stack from "@mui/joy/Stack";
-import Input from "@mui/joy/Input";
+// import Input from "@mui/joy/Input";
 import { Link as JoyLink } from "@mui/joy";
-import FolderRoundedIcon from "@mui/icons-material/FolderRounded";
 
-import Tooltip from "@mui/joy/Tooltip";
+// import Tooltip from "@mui/joy/Tooltip";
 import Drawer from "@mui/joy/Drawer";
 import ModalClose from "@mui/joy/ModalClose";
 import DialogTitle from "@mui/joy/DialogTitle";
 
-import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import BookRoundedIcon from "@mui/icons-material/BookRounded";
+// import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+// import BookRoundedIcon from "@mui/icons-material/BookRounded";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import ColorSchemeToggle from "./ThemeToggle";
 import NavDropDown from "./NavDropDown";
@@ -63,20 +62,23 @@ export default function NavBar() {
             // background: "orange",
           }}
         >
-          {NAV.map(({ link, name }) => (
-            <ListItem key={link}>
-              <Link to={link}>
-                <JoyLink underline="none">
-                  <ListItemButton>
-                    <ListItemDecorator>
-                      <FolderRoundedIcon fontSize="small" />
-                    </ListItemDecorator>
-                    <ListItemContent>{name}</ListItemContent>
-                  </ListItemButton>
-                </JoyLink>
-              </Link>
-            </ListItem>
-          ))}
+          {NAV.map(({ link, name, icon }) => {
+            const Icon = icon;
+            return (
+              <ListItem key={link}>
+                <Link to={link}>
+                  <JoyLink underline="none">
+                    <ListItemButton>
+                      <ListItemDecorator>
+                        <Icon fontSize="small" />
+                      </ListItemDecorator>
+                      <ListItemContent>{name}</ListItemContent>
+                    </ListItemButton>
+                  </JoyLink>
+                </Link>
+              </ListItem>
+            );
+          })}
         </List>
       </Stack>
       <Box sx={{ display: { xs: "inline-flex", sm: "none" } }}>
@@ -109,7 +111,7 @@ export default function NavBar() {
           alignItems: "center",
         }}
       >
-        <Input
+        {/* <Input
           size="sm"
           variant="outlined"
           placeholder="Search anything…"
@@ -155,7 +157,7 @@ export default function NavBar() {
           >
             <BookRoundedIcon />
           </IconButton>
-        </Tooltip>
+        </Tooltip> */}
         <ColorSchemeToggle />
         <NavDropDown handleLogOut={handleLogOut} />
       </Box>

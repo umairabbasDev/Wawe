@@ -22,6 +22,7 @@ const List = () => {
         minHeight: "94dvh",
         maxWidth: "100%",
         px: 2,
+        // background:"yellow"
       }}
     >
       <Box

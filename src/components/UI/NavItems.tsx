@@ -6,8 +6,6 @@ import ListItemButton from "@mui/joy/ListItemButton";
 import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import ListItemContent from "@mui/joy/ListItemContent";
 
-import FolderRoundedIcon from "@mui/icons-material/FolderRounded";
-
 import NAV from "../../config/nav";
 import { Link } from "react-router-dom";
 
@@ -24,18 +22,21 @@ export default function NavItems() {
             "& .JoyListItemButton-root": { p: "8px" },
           }}
         >
-          {NAV.map(({ link, name }) => (
-            <ListItem key={link}>
-              <Link to={link}>
-                <ListItemButton>
-                  <ListItemDecorator>
-                    <FolderRoundedIcon fontSize="small" />
-                  </ListItemDecorator>
-                  <ListItemContent>{name}</ListItemContent>
-                </ListItemButton>
-              </Link>
-            </ListItem>
-          ))}
+          {NAV.map(({ link, name, icon }) => {
+            const Icon = icon;
+            return (
+              <ListItem key={link}>
+                <Link to={link}>
+                  <ListItemButton>
+                    <ListItemDecorator>
+                      <Icon fontSize="small" />
+                    </ListItemDecorator>
+                    <ListItemContent>{name}</ListItemContent>
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            );
+          })}
         </List>
       </ListItem>
       <ListItem nested sx={{ mt: 2 }}>
